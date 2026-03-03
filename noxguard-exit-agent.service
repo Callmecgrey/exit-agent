@@ -1,0 +1,16 @@
+[Unit]
+Description=NoxGuard WireGuard Exit Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/noxguard-exit-agent
+EnvironmentFile=/etc/noxguard-exit-agent.env
+ExecStart=/usr/bin/node /opt/noxguard-exit-agent/agent.mjs
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
